@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">Picture of the day</string>
+    <string name="app_name">Material</string>
+    <string name="photo_of_the_day_stub">Photo of the day</string>
+    <string name="search_wiki">Найти в Википедии</string>
+    <string name="wiki_helper_text">Поищите термин в википедии</string>
+    <string name="favourite">favourite</string>
+    <string name="settings">settings</string>
+    <string name="search">Search</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_picture">Фото дня от NASA</string>
+    <string name="yesterday">Вчера</string>
+    <string name="today">Сегодня</string>
+    <string name="tomorrow">Завтра</string>
+    <string name="day_before_yesterday">Позавчера</string>
+    <string name="picture_before_yesterday">Фото позавчерашнего дня от NASA</string>
+    <string name="picture_yesterday">Фото вчерашнего дня от NASA</string>
+    <string name="picture_today">Фото дня от NASA</string>
+    <string name="discription">Описание</string>
 </resources>
