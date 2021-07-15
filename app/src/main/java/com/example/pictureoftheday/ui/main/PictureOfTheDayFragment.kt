@@ -46,6 +46,7 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
         titleBottomSheet = getView()?.findViewById<TextView>(R.id.bottom_sheet_description_header)
         descriptionBottomSheet = getView()?.findViewById<TextView>(R.id.bottom_sheet_description)
 
+
         B.apply {
             todayChip.isChecked = true
 
@@ -94,7 +95,7 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
     @SuppressLint("Range")
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
     private fun renderData(data: PictureOfTheDayData) {
