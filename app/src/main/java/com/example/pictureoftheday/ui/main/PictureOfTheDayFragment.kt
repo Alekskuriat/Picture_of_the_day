@@ -5,8 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -18,7 +17,9 @@ import com.example.pictureoftheday.domain.appstate.PictureOfTheDayData
 import com.example.pictureoftheday.domain.showSnackBar
 import com.example.pictureoftheday.domain.toast
 import com.example.pictureoftheday.domain.viewBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.navigation.NavigationBarView
 
 
 class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
@@ -28,8 +29,8 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
     }
 
     private var dateSelect = 0;
-    private var titleBottomSheet: TextView? = null
-    private var descriptionBottomSheet: TextView? = null
+    private var titleBottomSheetText: String = ""
+    private var descriptionBottomSheetText: String = ""
     private val viewModel: PictureOfTheDayViewModel by lazy {
         ViewModelProvider(this).get(PictureOfTheDayViewModel::class.java)
     }
@@ -43,14 +44,45 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        titleBottomSheet = getView()?.findViewById<TextView>(R.id.bottom_sheet_description_header)
-        descriptionBottomSheet = getView()?.findViewById<TextView>(R.id.bottom_sheet_description)
 
 
         B.apply {
             todayChip.isChecked = true
 
+            bottomNavigation.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.navigation_one -> {
+                        true
+                    }
+                    R.id.navigation_two -> {
+                        childFragmentManager.beginTransaction()
+                            .replace(
+                                R.id.bottom_sheet_container_fragment,
+                                BottomSheetSettingsFragment.newInstance()
+                                )
+                            .commitNow()
+                        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+                        true
+                    }
+                    R.id.navigation_three -> {
+                        true
+                    }
+                    else -> false
+                }
+
+            })
+
+
             discriptionChip.setOnClickListener {
+                childFragmentManager.beginTransaction()
+                    .replace(
+                        R.id.bottom_sheet_container_fragment,
+                        BottomSheetAboutFragment.newInstance(
+                            titleBottomSheetText,
+                            descriptionBottomSheetText
+                        )
+                    )
+                    .commitNow()
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
             }
 
@@ -83,9 +115,11 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
                 viewModel.getData(dateSelect)
             }
 
+
         }
 
-        viewModel.getData(dateSelect).observe(viewLifecycleOwner, Observer { renderData(it) })
+        viewModel.getData(dateSelect).observe(viewLifecycleOwner, Observer
+        { renderData(it) })
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
 
@@ -98,6 +132,7 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
+
     private fun renderData(data: PictureOfTheDayData) {
         when (data) {
             is PictureOfTheDayData.Success -> {
@@ -106,8 +141,8 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
                     imageView.visibility = View.VISIBLE
                 }
 
-                titleBottomSheet?.text = data.serverResponseData.title
-                descriptionBottomSheet?.text = data.serverResponseData.explanation
+                titleBottomSheetText = data.serverResponseData.title.toString()
+                descriptionBottomSheetText = data.serverResponseData.explanation.toString()
 
                 val serverResponseData = data.serverResponseData
                 val url = serverResponseData.url

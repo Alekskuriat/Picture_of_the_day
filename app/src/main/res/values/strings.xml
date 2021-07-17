@@ -18,4 +18,7 @@
     <string name="picture_yesterday">Фото вчерашнего дня от NASA</string>
     <string name="picture_today">Фото дня от NASA</string>
     <string name="discription">Описание</string>
+    <string name="set_theme">Выберите тему приложения</string>
+    <string name="Green">Green</string>
+    <string name="Pink">Pink</string>
 </resources>

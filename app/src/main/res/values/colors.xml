@@ -11,4 +11,12 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="color_gray">#66000000</color>
+    <color name="pink">#DF165D</color>
+    <color name="colorSecondaryGreenTheme">#0DADD5</color>
+    <color name="colorSecondaryVariantGreenTheme">#016187</color>
+    <color name="colorPrimaryVariantPinkTheme">#AF003C</color>
+    <color name="colorSecondaryPinkTheme">#D50DD2</color>
+    <color name="colorSecondaryVariantPinkTheme">#AF007D</color>
+    <color name="colorSurfacePinkTheme">#FFDDE9</color>
+    <color name="colorSurfaceGreenTheme">#95BFB9</color>
 </resources>
