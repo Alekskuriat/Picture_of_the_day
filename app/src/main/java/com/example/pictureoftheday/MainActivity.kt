@@ -3,9 +3,10 @@ package com.example.pictureoftheday
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pictureoftheday.domain.observe.Publisher
+import com.example.pictureoftheday.domain.observe.PublisherHolder
 import com.example.pictureoftheday.domain.router.AppRouter
 import com.example.pictureoftheday.domain.router.RouterHolder
-import com.example.pictureoftheday.ui.main.PictureOfTheDayFragment
 
 interface SetTheme {
     fun setTheme(id: Int?)
@@ -13,11 +14,11 @@ interface SetTheme {
 
 const val SET_THEME = "set_theme"
 
-class MainActivity : AppCompatActivity(), SetTheme, RouterHolder {
+class MainActivity : AppCompatActivity(), SetTheme, RouterHolder, PublisherHolder {
 
-    private var themeId: Int? = null
+
+    private val publisher = Publisher()
     private var theme: Int? = null
-    private var sharedPreferences: SharedPreferences? = null
     private lateinit var router: AppRouter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,14 +47,14 @@ class MainActivity : AppCompatActivity(), SetTheme, RouterHolder {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        themeId?.let { outState.putInt(SET_THEME, it) }
+        theme?.let { outState.putInt(SET_THEME, it) }
     }
 
 
     override fun setTheme(id: Int?) {
         val ed: SharedPreferences.Editor? = getSharedPreferences("SP", MODE_PRIVATE).edit()
         id?.let {
-            themeId = id
+            theme = id
             ed?.putInt(SET_THEME, it)
         }
         ed?.apply()
@@ -62,5 +63,9 @@ class MainActivity : AppCompatActivity(), SetTheme, RouterHolder {
 
     override fun getRouter(): AppRouter? {
         return router
+    }
+
+    override fun getPublisher(): Publisher? {
+        return publisher
     }
 }
