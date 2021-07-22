@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppThemePOD" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <item name="android:forceDarkAllowed">true</item>.
+
+
+        <item name="colorPrimary">?themeColorPrimary</item>
+        <item name="colorPrimaryVariant">?themeColorPrimaryVariant</item>
+        <item name="colorOnPrimary">?themeColorOnPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">?themeColorSecondary</item>
+        <item name="colorSecondaryVariant">?themeColorSecondaryVariant</item>
+        <item name="colorOnSecondary">?themeColorOnSecondary</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorSurface">?colorSurfaceTheme</item>
+
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="bottomNavigationStyle">@style/AppBottomNavigation</item>
+        <item name="textInputStyle">@style/AppInputText</item>
+        <item name="chipStyle">@style/AppChips</item>
+        <item name="chipGroupStyle">@style/AppChips</item>
+    </style>
+</resources>
