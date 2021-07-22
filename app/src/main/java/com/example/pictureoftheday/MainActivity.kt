@@ -3,6 +3,8 @@ package com.example.pictureoftheday
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pictureoftheday.domain.router.AppRouter
+import com.example.pictureoftheday.domain.router.RouterHolder
 import com.example.pictureoftheday.ui.main.PictureOfTheDayFragment
 
 interface SetTheme {
@@ -11,14 +13,16 @@ interface SetTheme {
 
 const val SET_THEME = "set_theme"
 
-class MainActivity : AppCompatActivity(), SetTheme {
+class MainActivity : AppCompatActivity(), SetTheme, RouterHolder {
 
     private var themeId: Int? = null
     private var theme: Int? = null
     private var sharedPreferences: SharedPreferences? = null
-
+    private lateinit var router: AppRouter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        router = AppRouter(supportFragmentManager)
 
         val sharedPreferences: SharedPreferences = getSharedPreferences("SP", MODE_PRIVATE)
 
@@ -36,9 +40,7 @@ class MainActivity : AppCompatActivity(), SetTheme {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, PictureOfTheDayFragment.newInstance())
-                .commitNow()
+            router.showStart()
         }
     }
 
@@ -56,5 +58,9 @@ class MainActivity : AppCompatActivity(), SetTheme {
         }
         ed?.apply()
         recreate()
+    }
+
+    override fun getRouter(): AppRouter? {
+        return router
     }
 }
