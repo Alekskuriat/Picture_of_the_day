@@ -21,4 +21,6 @@
     <string name="set_theme">Выберите тему приложения</string>
     <string name="Green">Green</string>
     <string name="Pink">Pink</string>
+    <string name="random_photo_mars">Случайное фото марса</string>
+    <string name="camera">Снято с камеры:</string>
 </resources>

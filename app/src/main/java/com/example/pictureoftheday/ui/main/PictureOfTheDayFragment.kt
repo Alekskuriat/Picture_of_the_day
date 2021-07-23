@@ -15,7 +15,6 @@ import com.example.pictureoftheday.domain.router.RouterHolder
 import com.example.pictureoftheday.domain.showSnackBar
 import com.example.pictureoftheday.domain.toast
 import com.example.pictureoftheday.domain.viewBinding
-import com.google.android.material.chip.ChipGroup
 
 
 class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
@@ -57,29 +56,8 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
                 holder?.getPublisher()?.showBottomSheet()
             }
 
-            chipGroup.setOnCheckedChangeListener { _, checkedId ->
-                when (checkedId) {
-                    1 -> {
-                        dateSelect = -2
-                        B.titlePictureDay.text = getString(R.string.picture_before_yesterday)
-                    }
-                    2 -> {
-                        dateSelect = -1
-                        B.titlePictureDay.text = getString(R.string.picture_yesterday)
-                    }
-                    3 -> {
-                        dateSelect = 0
-                        B.titlePictureDay.text = getString(R.string.picture_today)
-                    }
-                    else -> {
-                        dateSelect = 0
-                        B.titlePictureDay.text = getString(R.string.picture_today)
-                    }
-                }
-                viewModel.getData(dateSelect)
-            }
         }
-        viewModel.getData(dateSelect).observe(viewLifecycleOwner, Observer
+        viewModel.getDataPod(dateSelect).observe(viewLifecycleOwner, Observer
         { renderData(it) })
     }
 
@@ -124,7 +102,7 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
                 B.main.showSnackBar(
                     "Ошибка",
                     "Повторить загрузку?"
-                ) { viewModel.getData(dateSelect) }
+                ) { viewModel.getDataPod(dateSelect) }
             }
         }
     }

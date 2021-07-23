@@ -4,9 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pictureoftheday.BuildConfig
+import com.example.pictureoftheday.domain.appstate.MarsData
 import com.example.pictureoftheday.domain.appstate.PictureOfTheDayData
-import com.example.pictureoftheday.domain.retrofit.PodRetrofitImpl
-import com.example.pictureoftheday.domain.retrofit.PodServerResponceData
+import com.example.pictureoftheday.domain.retrofit.Pod.PodRetrofitImpl
+import com.example.pictureoftheday.domain.retrofit.Pod.PodServerResponceData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,11 +22,12 @@ enum class DateSelected(val int: Int) {
 
 class PictureOfTheDayViewModel(
     private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
+    private val marsLiveDataForViewToObserve: MutableLiveData<MarsData> = MutableLiveData(),
     private val retrofitImpl: PodRetrofitImpl = PodRetrofitImpl()
 ) :
     ViewModel() {
 
-    fun getData(select: Int): LiveData<PictureOfTheDayData> {
+    fun getDataPod(select: Int): LiveData<PictureOfTheDayData> {
         when (select) {
             0 -> sendServerRequest(DateSelected.TODAY)
             -1 -> sendServerRequest(DateSelected.YESTERDAY)
@@ -72,5 +74,6 @@ class PictureOfTheDayViewModel(
             })
         }
     }
+
 }
 

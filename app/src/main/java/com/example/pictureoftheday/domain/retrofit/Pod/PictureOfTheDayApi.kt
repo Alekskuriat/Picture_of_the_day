@@ -1,4 +1,4 @@
-package com.example.pictureoftheday.domain.retrofit
+package com.example.pictureoftheday.domain.retrofit.Pod
 
 import retrofit2.Call
 import retrofit2.http.GET

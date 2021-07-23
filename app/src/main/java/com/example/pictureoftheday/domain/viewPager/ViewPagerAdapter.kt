@@ -8,33 +8,33 @@ import com.example.pictureoftheday.ui.main.PictureDonkiFragment
 import com.example.pictureoftheday.ui.main.PictureMarsFragment
 import com.example.pictureoftheday.ui.main.PictureOfTheDayFragment
 
-private const val EARTH_FRAGMENT = 0
+private const val POD_FRAGMENT = 0
 private const val MARS_FRAGMENT = 1
-private const val WEATHER_FRAGMENT = 2
+private const val EARTH_FRAGMENT = 2
 
 class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager) {
 
     private val fragments = arrayOf(
-        PictureOfTheDayFragment.newInstance(),
+        PictureOfTheDayFragment(),
         PictureMarsFragment.newInstance(),
         PictureDonkiFragment.newInstance())
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> fragments[EARTH_FRAGMENT]
+            0 -> fragments[POD_FRAGMENT]
             1 -> fragments[MARS_FRAGMENT]
-            2 -> fragments[WEATHER_FRAGMENT]
+            2 -> fragments[EARTH_FRAGMENT]
             else -> fragments[EARTH_FRAGMENT]
         }
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> "Earth"
+            0 -> "POD"
             1 -> "Mars"
-            2 -> "Weather"
-            else -> "Earth"
+            2 -> "Earth"
+            else -> "POD"
         }
     }
 
