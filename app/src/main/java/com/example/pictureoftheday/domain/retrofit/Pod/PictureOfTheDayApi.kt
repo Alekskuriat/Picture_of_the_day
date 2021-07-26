@@ -1,4 +1,4 @@
-package com.example.pictureoftheday.domain.retrofit
+package com.example.pictureoftheday.domain.retrofit.Pod
 
 import retrofit2.Call
 import retrofit2.http.GET
@@ -11,6 +11,7 @@ interface PictureOfTheDayApi {
         @Query("api_key") apiKey: String,
         @Query("date") date: String
     ): Call<PodServerResponceData>
+
 }
 
 
