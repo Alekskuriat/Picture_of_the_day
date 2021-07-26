@@ -7,10 +7,34 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tap_to_screen"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tap_to_screen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/main_motion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            app:layoutDescription="@xml/motion_scene">
+
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            app:constraint_referenced_ids="title_picture_day, image_view, discription_chip"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
 
 
         <TextView
@@ -20,21 +44,22 @@
             android:paddingTop="@dimen/padding_10"
             app:layout_constraintBottom_toTopOf="@id/image_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
 
         <com.example.pictureoftheday.domain.EquilateralImageView
             android:id="@+id/image_view"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:contentDescription="@string/photo_of_the_day_stub"
             android:paddingStart="@dimen/padding_10"
             android:paddingEnd="@dimen/padding_10"
+            app:layout_constraintWidth_percent="0.9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_picture_day"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:srcCompat="@drawable/ic_no_photo_vector" />
 
 
@@ -47,6 +72,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_view" />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
         <ProgressBar
 

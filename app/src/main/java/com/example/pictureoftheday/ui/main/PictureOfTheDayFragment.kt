@@ -67,7 +67,8 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
             is PictureOfTheDayData.Success -> {
                 B.apply {
                     progressBar.visibility = View.GONE
-                    imageView.visibility = View.VISIBLE
+                    tapToScreen.visibility = View.VISIBLE
+                    group.visibility = View.VISIBLE
                 }
 
                 titleBottomSheetText = data.serverResponseData.title.toString()
@@ -93,8 +94,9 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment) {
             }
             is PictureOfTheDayData.Loading -> {
                 B.apply {
-                    imageView.visibility = View.GONE
+                    group.visibility = View.GONE
                     progressBar.visibility = View.VISIBLE
+                    tapToScreen.visibility = View.GONE
                 }
 
             }
