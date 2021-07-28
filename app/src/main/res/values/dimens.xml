@@ -3,4 +3,5 @@
     <dimen name="padding_10">10dp</dimen>
     <dimen name="padding_bottom_sheet">16dp</dimen>
     <dimen name="padding_8">8dp</dimen>
+    <dimen name="text_size_22">22sp</dimen>
 </resources>
