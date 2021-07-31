@@ -23,4 +23,6 @@
     <string name="Pink">Pink</string>
     <string name="random_photo_mars">Случайное фото марса</string>
     <string name="camera">Снято с камеры:</string>
+    <string name="tap_to_screen">Нажмите на экран</string>
+    <string name="see_description">Посмотреть описание</string>
 </resources>

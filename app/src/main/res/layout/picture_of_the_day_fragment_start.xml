@@ -8,7 +8,7 @@
     <com.example.pictureoftheday.domain.EquilateralImageView
         android:id="@+id/image_view"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -17,22 +17,25 @@
         app:srcCompat="@drawable/ic_no_photo_vector" />
 
 
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tap_to_screen"
         style="@style/TextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/padding_10"
+        android:layout_marginTop="@dimen/padding_10"
         android:text="@string/see_description"
         android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title"
         style="@style/TextViewStyle"
+        android:alpha="50"
         android:elevation="8dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="20dp"
         android:background="?themeColorPrimary"
         android:paddingStart="24dp"
         android:paddingTop="8dp"
@@ -41,10 +44,8 @@
         android:text="@string/title_picture"
         android:textColor="?themeColorOnPrimary"
         android:textSize="48sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/title_picture_day" />
-
-
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title_picture_day"
@@ -59,14 +60,8 @@
         android:text="@string/title_picture"
         android:textColor="?themeColorOnPrimary"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
-
-
 
 
     <com.google.android.material.textview.MaterialTextView
@@ -77,13 +72,11 @@
         android:gravity="center"
         android:elevation="8dp"
         android:padding="@dimen/padding_8"
-        android:layout_marginBottom="70dp"
         android:text="На фото видно камни и песок в кратере Даниэлсона (диаметр кратера около 67 км), расположенного на юго-востоке области Arabia Terra."
         android:textColor="?themeColorOnSecondary"
         android:textSize="@dimen/text_size_22"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toLeftOf="parent" />
 
 
     <com.google.android.material.progressindicator.CircularProgressIndicator

@@ -43,7 +43,7 @@ class PictureMarsFragment : Fragment(R.layout.picture_mars_fragment) {
             is MarsData.Success -> {
                 B.apply {
                     progressBar.visibility = View.GONE
-                    imageView.visibility = View.VISIBLE
+                    group.visibility = View.VISIBLE
                 }
 
                 val serverResponseData = data.serverResponseData
@@ -66,7 +66,7 @@ class PictureMarsFragment : Fragment(R.layout.picture_mars_fragment) {
             }
             is MarsData.Loading -> {
                 B.apply {
-                    imageView.visibility = View.GONE
+                    group.visibility = View.GONE
                     progressBar.visibility = View.VISIBLE
                 }
 
