@@ -12,6 +12,8 @@ class AppRouter(
 ){
 
 
+
+
     fun showStart() {
         fragmentManager.beginTransaction()
             .replace(R.id.container, MainFragment.newInstance())
@@ -30,6 +32,12 @@ class AppRouter(
     fun showViewPager(childFragmentManager: FragmentManager) {
         childFragmentManager.beginTransaction()
             .replace(R.id.container, ViewPagerFragment.newInstance())
+            .commitNow()
+    }
+
+    fun showToDoList(childFragmentManager: FragmentManager) {
+        childFragmentManager.beginTransaction()
+            .replace(R.id.container, )
             .commitNow()
     }
 }

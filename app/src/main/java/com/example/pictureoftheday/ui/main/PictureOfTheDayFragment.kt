@@ -1,3 +1,5 @@
+
+
 package com.example.pictureoftheday.ui.main
 
 import android.os.Bundle
@@ -54,9 +56,7 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment_st
             holder = activity as PublisherHolder?
         }
 
-        B.imageView.setOnClickListener {
-            if (show) hideComponents() else showComponents()
-        }
+
 
         viewModel.getDataPod(dateSelect).observe(viewLifecycleOwner, Observer
         { renderData(it) })
@@ -87,7 +87,10 @@ class PictureOfTheDayFragment : Fragment(R.layout.picture_of_the_day_fragment_st
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
                 }
-
+                
+                B.imageView.setOnClickListener {
+                    if (show) hideComponents() else showComponents()
+                }
 
             }
             is PictureOfTheDayData.Loading -> {

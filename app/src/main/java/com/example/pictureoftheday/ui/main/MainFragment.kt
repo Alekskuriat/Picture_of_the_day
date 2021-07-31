@@ -83,6 +83,11 @@ class MainFragment : Fragment(R.layout.main_fragment),
 
                         true
                     }
+                    R.id.navigation_four -> {
+                        router?.showToDoList(parentFragmentManager)
+                        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+                        true
+                    }
                     else -> false
                 }
 
@@ -113,3 +118,5 @@ class MainFragment : Fragment(R.layout.main_fragment),
     }
 
 }
+
+
