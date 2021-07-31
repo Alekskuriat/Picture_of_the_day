@@ -24,6 +24,7 @@ class PictureMarsFragment : Fragment(R.layout.picture_mars_fragment) {
         fun newInstance() = PictureMarsFragment()
     }
 
+
     private val viewModel: MarsViewModel by lazy {
         ViewModelProvider(this).get(MarsViewModel::class.java)
     }

@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity(), SetTheme, RouterHolder, PublisherHolde
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         theme?.let { outState.putInt(SET_THEME, it) }
+        
     }
 
 
