@@ -67,31 +67,6 @@ class MainFragment : Fragment(R.layout.main_fragment),
             viewPager.adapter = ViewPagerAdapter(childFragmentManager)
             tabLayout.setupWithViewPager(viewPager)
 
-
-            bottomNavigation.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener {
-                when (it.itemId) {
-                    R.id.navigation_one -> {
-                        true
-                    }
-                    R.id.navigation_two -> {
-                        router?.showSettings(childFragmentManager)
-                        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-                        true
-                    }
-                    R.id.navigation_three -> {
-                        router?.showViewPager(parentFragmentManager)
-
-                        true
-                    }
-                    R.id.navigation_four -> {
-                        router?.showToDoList(parentFragmentManager)
-                        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-                        true
-                    }
-                    else -> false
-                }
-
-            })
         }
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
     }
