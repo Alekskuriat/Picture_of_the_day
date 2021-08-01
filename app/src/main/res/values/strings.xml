@@ -25,4 +25,5 @@
     <string name="camera">Снято с камеры:</string>
     <string name="tap_to_screen">Нажмите на экран</string>
     <string name="see_description">Посмотреть описание</string>
+    <string name="add_note">add note</string>
 </resources>

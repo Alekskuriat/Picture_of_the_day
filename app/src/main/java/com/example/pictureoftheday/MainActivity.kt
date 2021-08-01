@@ -3,10 +3,14 @@ package com.example.pictureoftheday
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.pictureoftheday.domain.observe.Publisher
 import com.example.pictureoftheday.domain.observe.PublisherHolder
 import com.example.pictureoftheday.domain.router.AppRouter
 import com.example.pictureoftheday.domain.router.RouterHolder
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.navigation.NavigationBarView
 
 interface SetTheme {
     fun setTheme(id: Int?)
@@ -20,12 +24,20 @@ class MainActivity : AppCompatActivity(), SetTheme, RouterHolder, PublisherHolde
     private val publisher = Publisher()
     private var theme: Int? = null
     private lateinit var router: AppRouter
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+
+    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         router = AppRouter(supportFragmentManager)
 
         val sharedPreferences: SharedPreferences = getSharedPreferences("SP", MODE_PRIVATE)
+
 
         if (savedInstanceState == null) {
             theme = sharedPreferences.getInt(SET_THEME, 1)
@@ -40,9 +52,35 @@ class MainActivity : AppCompatActivity(), SetTheme, RouterHolder, PublisherHolde
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        setBottomSheetBehavior(findViewById(R.id.bottom_sheet_container))
         if (savedInstanceState == null) {
-            router.showStart()
+            router.showToDoList()
         }
+
+        bottomNavigation.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener {
+            when (it.itemId) {
+                R.id.navigation_one -> {
+                    router.showStart()
+                    true
+                }
+                R.id.navigation_two -> {
+                    router.showSettings(supportFragmentManager)
+                    true
+                }
+                R.id.navigation_three -> {
+                    router.showViewPager()
+
+                    true
+                }
+                R.id.navigation_four -> {
+                    router.showToDoList()
+                    true
+                }
+                else -> false
+            }
+
+        })
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

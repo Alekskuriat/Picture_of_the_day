@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Aleks/YandexDisk/Pictureoftheday/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.1587719298245614" />
+        <entry key="..\:/Users/Aleks/YandexDisk/Pictureoftheday/app/src/main/res/layout/fragment_item_note.xml" value="0.25" />
+        <entry key="..\:/Users/Aleks/YandexDisk/Pictureoftheday/app/src/main/res/layout/main_activity.xml" value="0.1" />
         <entry key="..\:/Users/Aleks/YandexDisk/Pictureoftheday/app/src/main/res/layout/main_fragment.xml" value="0.10914855072463768" />
+        <entry key="..\:/Users/Aleks/YandexDisk/Pictureoftheday/app/src/main/res/layout/picture_of_the_day_fragment.xml" value="0.17" />
+        <entry key="..\:/Users/Aleks/YandexDisk/Pictureoftheday/app/src/main/res/layout/picture_of_the_day_fragment_start.xml" value="0.10914855072463768" />
         <entry key="..\:/Users/Aleks/YandexDisk/Pictureoftheday/app/src/main/res/layout/to_do_list_fragment.xml" value="0.1587719298245614" />
+        <entry key="..\:/Users/Aleks/YandexDisk/Pictureoftheday/app/src/main/res/layout/view_pager_fragment.xml" value="0.1587719298245614" />
         <entry key="..\:/Users/Aleks/YandexDisk/Pictureoftheday/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.44712430426716143" />
       </map>
     </option>
